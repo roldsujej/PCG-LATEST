@@ -7,6 +7,29 @@
   
 </style>
 <div class="card">
+    <div>
+        <form asp-controller="Admin" asp-action="TaskForward" method="post">
+            <label for="assigneeSelect">Select Assignee</label>
+            <select asp-for="AssignId" id="assigneeSelect" class="form-control-custom">
+
+                @foreach (System.Data.DataRow dar in ViewBag.Userlist.Rows)
+                {
+                    <option value="@dar["Id"].ToString()">
+                        @dar["Name"].ToString(): @dar["Position"].ToString()
+                    </option>
+                }
+            </select>
+
+
+            @foreach (System.Data.DataRow dr in ViewBag.Tasklog.Rows)
+            {
+                <input type="hidden" name="taskId" value="@dr["TaskId"].ToString()" />
+            }
+
+            <button type="submit" class="btn-primary">Forward</button>
+        </form>
+    </div>
+    </div>
  
     <div class="table-container">
         <table class="custom-table">
@@ -34,28 +57,7 @@
         </table>
      
         </div>
-    <div class="card">
-        <form asp-controller="Admin" asp-action="TaskForward" method="post">
-                <label for="assigneeSelect">Select Assignee</label>
-                <select asp-for="AssignId" id="assigneeSelect">
-                   
-                    @foreach (System.Data.DataRow dar in ViewBag.Userlist.Rows)
-                    {
-                        <option value="@dar["Id"].ToString()">
-                            @dar["Name"].ToString(): @dar["Position"].ToString()
-                        </option>
-                    }
-                </select>
-
-
-                @foreach (System.Data.DataRow dr in ViewBag.Tasklog.Rows)
-                {
-                    <input type="hidden" name="taskId" value="@dr["TaskId"].ToString()" />
-                }
-
-                <button type="submit" class="btn-primary">Forward</button>
-        </form>
-    </div>
+   
     </div>
 
    
