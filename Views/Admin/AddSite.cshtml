@@ -1,0 +1,78 @@
+﻿@model pcg.Models.SitesModel
+
+@{
+    ViewData["Title"] = "Add Site";
+}
+
+<h1 style="text-align:center">Add Site</h1>
+
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="AddSite">
+        <div asp-validation-summary="All" class="text-danger"></div>
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="form-group">
+        <label asp-for="Client" class="control-label">Client</label>
+        <input asp-for="Client" class="form-control"/>
+    </div>                      
+    <div class="form-group">
+        <label asp-for="Site" class="control-label">Site</label>
+        <input asp-for="Site" class="form-control"/>
+    </div>
+    <div class="form-group">
+        <label asp-for="SiteOM" class="control-label">Operation Manager</label>
+        <select asp-for="SiteOM" class="form-control">
+            @foreach(System.Data.DataRow dr in ViewBag.Userlist.Rows)
+            {
+                if (@dr["Position"].ToString() == "Operation Manager")
+                {
+                    <option value="@dr["Id"].ToString()">@dr["Name"].ToString()</option>
+                } 
+            }
+        </select>
+    </div>
+    <div class="form-group">
+        <label asp-for="SiteSOM" class="control-label">Sr. Operation Manager</label>
+        <select asp-for="SiteSOM" class="form-control">
+            @foreach(System.Data.DataRow dr in ViewBag.Userlist.Rows)
+            {
+                if (@dr["Position"].ToString() == "Sr. Operation Manager")
+                {
+                    <option value="@dr["Id"].ToString()">@dr["Name"].ToString()</option>
+                } 
+            }
+        </select>
+    </div>
+    <div class="form-group">
+        <label asp-for="SiteSC" class="control-label">Site Coordinator</label>
+        <select asp-for="SiteSC" class="form-control">
+            @foreach(System.Data.DataRow dr in ViewBag.Userlist.Rows)
+            {
+                if (@dr["Position"].ToString() == "Site Coordinator")
+                {
+                    <option value="@dr["Id"].ToString()">@dr["Name"].ToString()</option>
+                } 
+            }
+        </select>
+    </div>
+    <div class="form-group">
+        <label asp-for="SiteTK" class="control-label">Time Keeper</label>
+        <select asp-for="SiteTK" class="form-control">
+            @foreach(System.Data.DataRow dr in ViewBag.Userlist.Rows)
+            {
+                if (@dr["Position"].ToString() == "Time Keeper")
+                {
+                    <option value="@dr["Id"].ToString()">@dr["Name"].ToString()</option>
+                } 
+            }
+        </select>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Add Site" asp-action="AddSite" class="btn btn-primary btn-block" />
+    </div>
+        </form>
+    </div>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

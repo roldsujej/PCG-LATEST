@@ -1,0 +1,181 @@
+﻿@model pcg.Models.AdminModel
+@{
+    ViewData["Title"] = "Admin Page";
+  
+}
+
+    <div class="card">
+        <table class="custom-table">
+            <caption>
+                Recent Forwarded Task
+            </caption>
+            <!-- Added caption for table -->
+            <thead>
+                <tr>
+                    <th>Task No.</th>
+                    <th>Task</th>
+                    <th>Remarks</th>
+                    <th>Description</th>
+                    <th>Assignee</th>
+                    <th>Client/Site</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="text-center text-nowrap">1</td>
+                    <td class="text-center text-nowrap">On-going</td>
+                    <td class="text-center text-nowrap">Sample</td>
+                    <td class="text-center text-nowrap">Employee 321314</td>
+                    <td class="text-center text-nowrap">Aragon</td>
+                    <td class="text-center text-nowrap">3-25-2024</td>
+                    <td class="text-center text-nowrap"></td>
+                </tr>
+                <!-- Add more rows as needed -->
+            </tbody>
+        </table>
+    </div>
+    <div class="card">
+        <table class="custom-table">
+            <caption>
+                Recent Forwarded Task
+            </caption>
+            <!-- Added caption for table -->
+            <thead>
+                <tr>
+                    <th>Task No.</th>
+                    <th>Task</th>
+                    <th>Remarks</th>
+                    <th>Description</th>
+                    <th>Assignee</th>
+                    <th>Client/Site</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="text-center text-nowrap">1</td>
+                    <td class="text-center text-nowrap">On-going</td>
+                    <td class="text-center text-nowrap">Sample</td>
+                    <td class="text-center text-nowrap">Employee 321314</td>
+                    <td class="text-center text-nowrap">Aragon</td>
+                    <td class="text-center text-nowrap">3-25-2024</td>
+                    <td class="text-center text-nowrap"></td>
+                </tr>
+                <!-- Add more rows as needed -->
+            </tbody>
+        </table>
+    </div>
+    <div class="card">
+        <table class="custom-table">
+            <caption>
+                Recent Approved Task
+            </caption>
+            <!-- Added caption for table -->
+            <thead>
+                <tr>
+                    <th>Task No.</th>
+                    <th>Task</th>
+                    <th>Remarks</th>
+                    <th>Description</th>
+                    <th>Assignee</th>
+                    <th>Client/Site</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="text-center text-nowrap">1</td>
+                    <td class="text-center text-nowrap">On-going</td>
+                    <td class="text-center text-nowrap">Sample</td>
+                    <td class="text-center text-nowrap">Employee 321314</td>
+                    <td class="text-center text-nowrap">Aragon</td>
+                    <td class="text-center text-nowrap">3-25-2024</td>
+                    <td class="text-center text-nowrap"></td>
+                </tr>
+                <!-- Add more rows as needed -->
+            </tbody>
+        </table>
+    </div>
+   
+
+
+
+
+
+
+   @*  <div class="card shadow">
+    
+      
+
+    </div>
+ *@
+
+
+
+    
+       
+          
+           
+        
+       
+    
+
+
+
+@* <h1 style="text-align:center">Recent Forwarded Task</h1>
+<table class="table table-hover table-responsive-sm table-sm">
+    <thead>
+        <tr>
+            <th class="text-center text-uppercase">Task No.</th>
+            <th class="text-center text-uppercase">Task</th>
+            <th class="text-center text-uppercase">Remarks</th>
+            <th class="text-center text-uppercase">Description</th>
+            <th class="text-center text-uppercase">Assignee</th>
+            <th class="text-center text-uppercase">Client/Site</th> 
+            <th class="text-center text-uppercase">Date</th>
+        </tr>
+    </thead>
+    <tbody id="myTable" class="viewbag-data">
+        @foreach (System.Data.DataRow dr in ViewBag.fwddate.Rows)
+        {
+        <tr>
+            <td class="text-center text-nowrap">@dr["TaskId"].ToString()</td>
+            <td class="text-center text-nowrap">@dr["Task"].ToString()</td>
+            <td class="text-center text-nowrap">@dr["Remarks"].ToString()</td>
+            <td class="text-center text-nowrap">@dr["Description"].ToString()</td>
+            <td class="text-center text-nowrap">@dr["Name"].ToString()</td>
+            <td class="text-center text-nowrap">@dr["Site"].ToString() @dr["Client"].ToString()</td>
+            <td class="text-center text-nowrap">@dr["DateFwd"].ToString()</td>
+        </tr>
+        }
+    </tbody>
+</table>
+<h1 style="text-align:center">Recent Approved Task</h1>
+<table class="table table-hover table-responsive-sm table-sm">
+    <thead>
+        <tr>
+            <th class="text-center text-uppercase">Task No.</th>
+            <th class="text-center text-uppercase">Task</th>
+            <th class="text-center text-uppercase">Remarks</th>
+            <th class="text-center text-uppercase">Description</th>
+            <th class="text-center text-uppercase">Assignee</th>
+            <th class="text-center text-uppercase">Client/Site</th> 
+            <th class="text-center text-uppercase">Date</th>
+        </tr>
+    </thead>
+    <tbody id="myTable" class="viewbag-data">
+        @foreach (System.Data.DataRow dr in ViewBag.rcvdate.Rows)
+        {
+        <tr>
+            <td class="text-center text-nowrap">@dr["TaskId"].ToString()</td>
+            <td class="text-center text-nowrap">@dr["Task"].ToString()</td>
+            <td class="text-center text-nowrap">@dr["Remarks"].ToString()</td>
+            <td class="text-center text-nowrap">@dr["Description"].ToString()</td>
+            <td class="text-center text-nowrap">@dr["Name"].ToString()</td>
+            <td class="text-center text-nowrap">@dr["Site"].ToString() @dr["Client"].ToString()</td>
+            <td class="text-center text-nowrap">@dr["DateRcv"].ToString()</td>
+        </tr>
+        }
+    </tbody>
+</table> *@

@@ -1,0 +1,126 @@
+﻿@model pcg.Models.SitesModel
+@{
+    ViewData["Title"] = "Sites";
+} 
+<head>
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<div>
+<h1 style="text-align:center">Sites</h1>
+<a asp-controller="Admin" asp-action="AddSite" class="btn btn-primary btn-block">Add Site</a>
+</div>
+<table class="table table-hover table-responsive-sm table-sm">
+    <thead>
+        <tr>
+            <th class="text-center text-uppercase">Client</th>
+            <th class="text-center text-uppercase">Site</th>
+            <th class="text-center text-uppercase">OM</th>
+            <th class="text-center text-uppercase">Details</th>
+        </tr>
+    </thead>
+    <tbody id="myTable">
+        @foreach (System.Data.DataRow dr in ViewBag.Sitelist.Rows)
+        {
+            <tr class="row-click" onclick="toggleRows(this)">
+                <td class="text-center text-nowrap">@dr["Client"].ToString()</td>
+                <td class="text-center text-nowrap">@dr["Site"].ToString()</td>
+                <td class="text-center text-nowrap">@dr["Name"].ToString()</td>
+                <td class="text-center text-nowrap">         
+                    <div style="text-align:center">
+                        <form style="display: inline-block; margin-right" asp-action="TaskDetail" method="get">                
+                            <input type="hidden" asp-for="SiteId" value="@dr["SiteId"].ToString()" />
+                            <button type="submit" class="btn btn-link p-0 m-0 text-primary border-0">Task Details</button>
+                        </form> |
+                        <form style="display: inline-block; margin-right" asp-action="AddTask" method="get">                
+                            <input type="hidden" asp-for="SiteId" value="@dr["SiteId"].ToString()" />
+                            <button type="submit" class="btn btn-link p-0 m-0 text-primary border-0">Add Task</button>
+                        </form>
+                    </div>
+                </td>
+        @*<tr class="row-options" style="display: none;">
+            <td colspan="3">
+                <div>
+                    @foreach (System.Data.DataRow dar in ViewBag.Tasklist.Rows)
+                    {
+                        if (dar["SiteReqId"].ToString() == dr["SiteId"].ToString())
+                        {
+                            <div style="text-align:center">
+                                <a href="@Url.Action("TaskDetail", "Admin", new { siteId = dar["SiteReqId"] })">
+                                @dar["Task"].ToString() @dar["Remarks"].ToString()
+                                </a>
+                            </div>
+                        }                                     
+                    }
+                </div>
+            </td>
+            </tr>
+        <tr class="row-options" style="display: none;">
+            <td colspan="3">
+                <div class="text-center">
+                    <a href="@Url.Action("AddTask", "Admin", new { siteId = dr["SiteId"] })" class="text-link">--Add Task--</a> 
+                </div>
+            </td>*@
+        </tr>
+        }
+    </tbody>
+</table>
+@*<div class="row">
+    <div class="col-sm-12">
+        <label asp-for="Selectedsite" class="control-label">Select Site</label>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-6">
+        <select id="siteSelect" asp-for="Selectedsite" class="form-control">
+            @foreach (System.Data.DataRow dr in ViewBag.Sitelist.Rows)
+                {
+                <option value="@dr["SiteId"].ToString()"
+                        data-location="@dr["Site"].ToString()"
+                        data-name="@dr["Client"].ToString()"
+                        data-date="@dr["DateAdded"].ToString()"
+                        data-status="@dr["Status"].ToString()">
+                        @dr["Site"].ToString() @dr["Client"].ToString()
+                        </option>
+                }
+        </select>
+        </div>
+        <div class="col-sm">
+        <a asp-controller="Admin" asp-action="AddSite" class="btn btn-primary btn-block">Add Site</a>
+        </div>
+    </div>
+    <h3 style="text-align:center">Site Info</h3>
+    <body>
+        <div class="row" >
+            <div class="col-sm-6">
+                <h6>Site name:</h6>
+            </div>
+            <div class="col-sm-6">
+                <h6 id="siteDetails"></h6>
+            </div>
+        </div>
+        <div class="row" >
+            <div class="col-sm-6">
+                <h6>Date Added:</h6>
+            </div>
+            <div class="col-sm-6">
+                <h6 id="date"></h6>
+            </div>
+        </div>
+        <div class="row" >
+            <div class="col-sm-6">
+                <h6>Status:</h6>
+            </div>
+            <div class="col-sm-6">
+                <h6 id="status"></h6>
+            </div>
+        </div>
+    </body>
+    <script>
+    function toggleRows(row) {
+        var nextRow = row.nextElementSibling;
+        if (nextRow.classList.contains('row-options')) {
+            nextRow.style.display = nextRow.style.display === 'none' ? 'table-row' : 'none';
+            nextRow.nextElementSibling.style.display = nextRow.style.display; // Show/hide the next row
+        }
+    }
+</script>*@
